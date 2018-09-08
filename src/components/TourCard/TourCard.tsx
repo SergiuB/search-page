@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { Flex, Relative, Absolute, Box } from 'rebass';
 import Info, { IInfoProps } from './Info';
 import LargeScreenOnly from './LargeScreenOnly';
 import SmallScreenOnly from './SmallScreenOnly';
 import ExtraInfo, { IExtraInfoProps } from './ExtraInfo';
-import styled from 'styled-components';
+import Box from '../Box';
+import styled from '../../lib/styled-components';
+import { color, space } from '../../lib/theme-utils';
+import media from '../../lib/media';
 
 export interface ITourCardProps extends IInfoProps, IExtraInfoProps {
   id: number;
@@ -18,18 +20,48 @@ const Image = styled.img`
   height: auto;
 `;
 
+const TourCardWrapper = styled.div`
+  background: ${color('white')};
+  flex-wrap: wrap;
+  display: flex;
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
+  ${media.phone`width: 100%;`}
+  ${media.tablet`width: 100%;`}
+  ${media.desktop`width: 250px;`}
+`;
+
+const InfoWrapper = styled.div`
+  padding-top: ${space(3)};
+  padding-bottom: ${space(1)};
+  flex: 1 1 auto;
+`;
+
+const ExtraInfoWrapper = styled(InfoWrapper)`
+  padding-top: ${space(3)};
+  padding-bottom: ${space(1)};
+  ${media.phone`width: 100%;`}
+  ${media.tablet`width: 100%;`}
+  ${media.desktop`width: 0px;`};
+`;
+
+const MapThumbnail = styled(Box)`
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 100px;
+`;
+
 export default class TourCard extends React.PureComponent<ITourCardProps> {
   public render() {
     return (
-      <Flex bg="white" flexWrap="wrap">
-        <Box width={[1, 1, '250px']}>{this.renderImage()}</Box>
-        <Box flex="1 1 auto" pt={3} pb={1}>
-          {this.renderInfo()}
-        </Box>
-        <Box width={[1, 1, 1 / 4]} pt={3} pb={1}>
-          {this.renderExtraInfo()}
-        </Box>
-      </Flex>
+      <TourCardWrapper>
+        <ImageWrapper>{this.renderImage()}</ImageWrapper>
+        <InfoWrapper>{this.renderInfo()}</InfoWrapper>
+        <ExtraInfoWrapper>{this.renderExtraInfo()}</ExtraInfoWrapper>
+      </TourCardWrapper>
     );
   }
 
@@ -85,17 +117,15 @@ export default class TourCard extends React.PureComponent<ITourCardProps> {
     const mapEl = <Image src={this.props.mapImage} />;
 
     return (
-      <Relative>
+      <React.Fragment>
         {imageEl}
         <LargeScreenOnly>
           <Box pt={1}>{mapEl}</Box>
         </LargeScreenOnly>
         <SmallScreenOnly>
-          <Absolute bottom="10px" right="10px">
-            <Box width={100}>{mapEl}</Box>
-          </Absolute>
+          <MapThumbnail>{mapEl}</MapThumbnail>
         </SmallScreenOnly>
-      </Relative>
+      </React.Fragment>
     );
   }
 }

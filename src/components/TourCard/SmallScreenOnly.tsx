@@ -1,10 +1,9 @@
-import * as React from 'react';
-import { Hide } from 'rebass';
+import styled from 'styled-components';
+import media from '../../lib/media';
 
-const SmallScreenOnly: React.SFC = ({ children }) => (
-  <Hide xlarge={true} large={true} medium={true}>
-    {children}
-  </Hide>
-);
-
+const SmallScreenOnly = styled.div`
+  ${media.phone`display: block;`}
+  ${media.tablet`display: block;`}
+  ${media.desktop`display: none;`};
+`;
 export default SmallScreenOnly;

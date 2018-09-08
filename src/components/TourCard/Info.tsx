@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Flex, Box, Heading, Text } from 'rebass';
+import { Flex, Heading, Text } from 'rebass';
 import styled from 'styled-components';
 import LargeScreenOnly from './LargeScreenOnly';
+import Box from '../Box';
 
 export interface IInfoProps {
   tourName: string;

@@ -1,9 +1,4 @@
-export declare const Box: any;
 export declare const Flex: any;
-export declare const Container: any;
-export declare const Provider: any;
-export declare const Hide: any;
-export declare const Relative: any;
 export declare const Absolute: any;
 export declare const Heading: any;
 export declare const Text: any;

@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Flex, Box, Text, Divider } from 'rebass';
+import { Flex, Text, Divider } from 'rebass';
 import getSymbolFromCurrency from 'currency-symbol-map';
 import LargeScreenOnly from './LargeScreenOnly';
 import SmallScreenOnly from './SmallScreenOnly';
 
+import Box from '../Box';
 const formatPrice = (price: number, currency: string) =>
   `${getSymbolFromCurrency(currency) || ''}${price}`;
 

@@ -1,6 +1,9 @@
 import * as React from 'react';
-import { Provider, Container, Box, Flex } from 'rebass';
 import TourCard from './components/TourCard/TourCard';
+import TourThemeProvider from './components/Provider/Provider';
+import media from './lib/media';
+import styled from './lib/styled-components';
+import { color, space } from './lib/theme-utils';
 
 const Tour = () => (
   <TourCard
@@ -32,26 +35,41 @@ const Tour = () => (
   />
 );
 
+const TourCardContainer = styled.div`
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: ${space(3)};
+  padding-right: ${space(3)};
+  background: ${color('gray')};
+  flex-wrap: wrap;
+  display: flex;
+`;
+
+const TourCardWrapper = styled.div`
+  padding: ${space(1)};
+  ${media.phone`width: 100%;`}
+  ${media.tablet`width: 50%;`}
+  ${media.desktop`width: 100%;`}
+`;
+
+//
 class App extends React.Component {
   public render() {
     return (
-      <Provider>
-        <Box bg="gray">
-          <Container>
-            <Flex flexWrap="wrap">
-              <Box p={1} width={[1, 1 / 2, 1]}>
-                <Tour />
-              </Box>
-              <Box p={1} width={[1, 1 / 2, 1]}>
-                <Tour />
-              </Box>
-              <Box p={1} width={[1, 1 / 2, 1]}>
-                <Tour />
-              </Box>
-            </Flex>
-          </Container>
-        </Box>
-      </Provider>
+      <TourThemeProvider>
+        <TourCardContainer>
+          <TourCardWrapper>
+            <Tour />
+          </TourCardWrapper>
+          <TourCardWrapper>
+            <Tour />
+          </TourCardWrapper>
+          <TourCardWrapper>
+            <Tour />
+          </TourCardWrapper>
+        </TourCardContainer>
+      </TourThemeProvider>
     );
   }
 }
