@@ -17,6 +17,10 @@ interface IInfoProps {
   tourName: string;
   description: string;
   destinations: string[];
+  ageFrom: number;
+  ageTo: number;
+  country: string;
+  tourOperator: string;
 }
 
 interface IExtraInfoProps {
@@ -28,7 +32,21 @@ interface IExtraInfoProps {
 
 export interface ITourCardProps extends IInfoProps, IExtraInfoProps {
   id: number;
+  tourImage: string;
+  mapImage: string;
 }
+
+const SmallScreenOnly: React.SFC = ({ children }) => (
+  <Hide xlarge={true} large={true} medium={true}>
+    {children}
+  </Hide>
+);
+
+const LargeScreenOnly: React.SFC = ({ children }) => (
+  <Hide small={true} xsmall={true}>
+    {children}
+  </Hide>
+);
 
 const InfoLabel = styled(Text)`
   text-transform: uppercase;
@@ -38,7 +56,7 @@ const Detail: React.SFC<{ label: string; info: string }> = ({
   label,
   info
 }) => (
-  <Flex>
+  <Flex pt={1}>
     <Box width="40%">
       <InfoLabel color="darken" fontSize={1}>
         {label}
@@ -53,11 +71,15 @@ const Detail: React.SFC<{ label: string; info: string }> = ({
 const Info: React.SFC<IInfoProps> = ({
   tourName,
   description,
-  destinations
+  destinations,
+  ageFrom,
+  ageTo,
+  country,
+  tourOperator
 }) => (
   <React.Fragment>
     <Heading>{tourName}</Heading>
-    <Hide small={true} xsmall={true}>
+    <LargeScreenOnly>
       <Box pt={2} pb={3}>
         <Text>{description}</Text>
       </Box>
@@ -67,8 +89,11 @@ const Info: React.SFC<IInfoProps> = ({
           label="Starts/Ends In"
           info={`${destinations[0]} / ${destinations[destinations.length - 1]}`}
         />
+        <Detail label="Age Range" info={`${ageFrom} to ${ageTo} years old`} />
+        <Detail label="Country" info={country} />
+        <Detail label="Operator" info={tourOperator} />
       </Box>
-    </Hide>
+    </LargeScreenOnly>
   </React.Fragment>
 );
 
@@ -130,23 +155,7 @@ export default class TourCard extends React.PureComponent<ITourCardProps> {
   public render() {
     return (
       <Flex bg="white" flexWrap="wrap">
-        <Box width={[1, 1, '250px']}>
-          <Relative>
-            <Image src="http://dummyimage.com/928x680.png/5fa2dd/ffffff" />
-            <Hide small={true} xsmall={true}>
-              <Box pt={1}>
-                <Image src="http://dummyimage.com/928x400.png/cc0000/ffffff" />
-              </Box>
-            </Hide>
-            <Hide xlarge={true} large={true} medium={true}>
-              <Absolute bottom="10px" right="10px">
-                <Box width={100}>
-                  <Image src="http://dummyimage.com/928x400.png/cc0000/ffffff" />
-                </Box>
-              </Absolute>
-            </Hide>
-          </Relative>
-        </Box>
+        <Box width={[1, 1, '250px']}>{this.renderImage()}</Box>
         <Box flex="1 1 auto" pt={3} pb={1}>
           {this.renderInfo()}
         </Box>
@@ -163,19 +172,23 @@ export default class TourCard extends React.PureComponent<ITourCardProps> {
         tourName={this.props.tourName}
         description={this.props.description}
         destinations={this.props.destinations}
+        ageFrom={this.props.ageFrom}
+        ageTo={this.props.ageTo}
+        country={this.props.country}
+        tourOperator={this.props.tourOperator}
       />
     );
 
     return (
       <React.Fragment>
-        <Hide small={true} xsmall={true}>
+        <LargeScreenOnly>
           <Box ml="auto" width="95%">
             {infoEl}
           </Box>
-        </Hide>
-        <Hide xlarge={true} large={true} medium={true}>
+        </LargeScreenOnly>
+        <SmallScreenOnly>
           <Box px={2}>{infoEl}</Box>
-        </Hide>
+        </SmallScreenOnly>
       </React.Fragment>
     );
   }
@@ -186,15 +199,34 @@ export default class TourCard extends React.PureComponent<ITourCardProps> {
 
     return (
       <Box px={2}>
-        <Hide small={true} xsmall={true}>
+        <LargeScreenOnly>
           <ExtraInfoLarge {...extraInfoProps} />
-        </Hide>
-        <Hide xlarge={true} large={true} medium={true}>
+        </LargeScreenOnly>
+        <SmallScreenOnly>
           <Box pb={2}>
             <ExtraInfoSmall {...extraInfoProps} />
           </Box>
-        </Hide>
+        </SmallScreenOnly>
       </Box>
+    );
+  }
+
+  private renderImage() {
+    const imageEl = <Image src={this.props.tourImage} />;
+    const mapEl = <Image src={this.props.mapImage} />;
+
+    return (
+      <Relative>
+        {imageEl}
+        <LargeScreenOnly>
+          <Box pt={1}>{mapEl}</Box>
+        </LargeScreenOnly>
+        <SmallScreenOnly>
+          <Absolute bottom="10px" right="10px">
+            <Box width={100}>{mapEl}</Box>
+          </Absolute>
+        </SmallScreenOnly>
+      </Relative>
     );
   }
 }

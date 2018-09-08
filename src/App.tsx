@@ -22,7 +22,13 @@ const Tour = () => (
     length={13}
     price={5008}
     saving={92}
-    currency={'AUD'}
+    currency="AUD"
+    tourImage="http://dummyimage.com/928x680.png/5fa2dd/ffffff"
+    mapImage="http://dummyimage.com/928x400.png/cc0000/ffffff"
+    ageFrom={21}
+    ageTo={73}
+    tourOperator="Cormier-Pfeffer"
+    country="Indonesia"
   />
 );
 
