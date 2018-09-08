@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Provider, Container, Box, Flex } from 'rebass';
-import TourCard from './components/TourCard';
+import TourCard from './components/TourCard/TourCard';
 
 const Tour = () => (
   <TourCard
