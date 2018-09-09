@@ -31,23 +31,30 @@ const SelectWrapper = styled.div`
   color: gray;
 `;
 
-const SortingDrodown: React.SFC<{
+export default class SortingDrodown extends React.PureComponent<{
   sortOptions: ISortOption[];
   value: string;
-  onChange: React.ChangeEventHandler<HTMLSelectElement>;
-}> = ({ sortOptions, value, onChange }) => {
-  return (
-    <SelectWrapper>
-      <label htmlFor="">Sort By</label>
-      <Select onChange={onChange} value={value}>
-        {sortOptions.map(option => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </Select>
-    </SelectWrapper>
-  );
-};
+  onChange: (value: string) => void;
+}> {
+  public render() {
+    const { sortOptions, value } = this.props;
+    return (
+      <SelectWrapper>
+        <label htmlFor="">Sort By</label>
+        <Select onChange={this.handleSortChange} value={value}>
+          {sortOptions.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </Select>
+      </SelectWrapper>
+    );
+  }
 
-export default SortingDrodown;
+  private handleSortChange = (
+    event: React.SyntheticEvent<HTMLSelectElement>
+  ) => {
+    this.props.onChange(event.currentTarget.value);
+  };
+}

@@ -57,7 +57,7 @@ const sortOptions: ISortOption[] = [
   }
 ];
 
-interface ISearchPageProps {
+export interface ISearchPageProps {
   dataUrl: string;
 }
 
@@ -101,18 +101,22 @@ export default class SearchPage extends React.Component<
     );
   }
 
-  public componentDidMount() {
-    fetch(this.props.dataUrl)
-      .then(response => response.json())
-      .then((items: ITourItemAPI[]) =>
-        this.setState({ items: items.map(itemToTourCardProps) })
-      );
+  public async componentDidMount() {
+    try {
+      const response = await fetch(this.props.dataUrl);
+      const items: ITourItemAPI[] = await response.json();
+      this.setState({ items: items.map(itemToTourCardProps) });
+    } catch (error) {
+      // We could implement error handling for the API,
+      // set the error on state and render an error dialog in case of error.
+      // this.setState({ error })
+    }
   }
 
-  private handleSortChange = (
-    event: React.SyntheticEvent<HTMLSelectElement>
-  ) => {
-    this.setState({ sortBy: event.currentTarget.value }, () => {
+  private handleSortChange = (value: string) => {
+    this.setState({ sortBy: value }, () => {
+      // After sorting, need to force a check on LazyLoad,
+      // maybe hidden items have now become visible and need to be rendered.
       forceCheck();
     });
   };
