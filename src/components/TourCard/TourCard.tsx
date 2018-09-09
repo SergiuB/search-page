@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Info, { IInfoProps } from './Info';
-import LargeScreenOnly from './LargeScreenOnly';
-import SmallScreenOnly from './SmallScreenOnly';
+import LargeScreenOnly from '../LargeScreenOnly';
+import SmallScreenOnly from '../SmallScreenOnly';
 import ExtraInfo, { IExtraInfoProps } from './ExtraInfo';
 import Box from '../Box';
 import styled from '../../lib/styled-components';
@@ -43,9 +43,10 @@ const InfoWrapper = styled.div`
 const ExtraInfoWrapper = styled(InfoWrapper)`
   padding-top: ${space(3)};
   padding-bottom: ${space(1)};
+  flex: 0 0  auto;
   ${media.phone`width: 100%;`}
   ${media.tablet`width: 100%;`}
-  ${media.desktop`width: 0px;`};
+  ${media.desktop`width: 25%;`};
 `;
 
 const MapThumbnail = styled(Box)`

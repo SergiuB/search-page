@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Flex, Heading, Text } from 'rebass';
 import styled from 'styled-components';
-import LargeScreenOnly from './LargeScreenOnly';
-import Box from '../Box';
+import LargeScreenOnly from '../LargeScreenOnly';
+import Box from 'src/components/Box';
+import Text from 'src/components/Text';
+import Flex from 'src/components/Flex';
+import { fontSize, fontWeight } from '../../lib/theme-utils';
 
 export interface IInfoProps {
   tourName: string;
@@ -33,6 +35,13 @@ const Detail: React.SFC<{ label: string; info: string }> = ({
     </Box>
   </Flex>
 );
+
+const Heading = styled.h2`
+  font-size: ${fontSize(5)};
+  font-weight: ${fontWeight('bold')};
+  line-height: 1.25;
+  margin: 0;
+`;
 
 const Info: React.SFC<IInfoProps> = ({
   tourName,

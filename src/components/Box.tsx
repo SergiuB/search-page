@@ -1,16 +1,15 @@
 import styled, { css } from '../lib/styled-components';
 import { space } from '../lib/theme-utils';
 
-const Box = styled<
-  {
-    px?: string | number;
-    pt?: string | number;
-    pb?: string | number;
-    ml?: string | number;
-    width?: string;
-  },
-  'div'
->('div')`
+export interface IBoxProps {
+  px?: string | number;
+  pt?: string | number;
+  pb?: string | number;
+  ml?: string | number;
+  width?: string;
+}
+
+const Box = styled<IBoxProps, 'div'>('div')`
   ${props =>
     props.ml !== undefined &&
     css`
@@ -18,26 +17,26 @@ const Box = styled<
     `};
 
   ${props =>
-    props.px &&
+    props.px !== undefined &&
     css`
       padding-left: ${space(props.px)};
       padding-right: ${space(props.px)};
     `};
 
   ${props =>
-    props.pt &&
+    props.pt !== undefined &&
     css`
       padding-top: ${space(props.pt)};
     `};
 
   ${props =>
-    props.pb &&
+    props.pb !== undefined &&
     css`
       padding-bottom: ${space(props.pb)};
     `};
 
   ${props =>
-    props.width &&
+    props.width !== undefined &&
     css`
       width: ${props.width};
     `};

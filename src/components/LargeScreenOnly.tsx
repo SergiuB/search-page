@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import media from '../../lib/media';
+import media from '../lib/media';
 
 const LargeScreenOnly = styled.div`
   ${media.phone`display: none;`}

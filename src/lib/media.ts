@@ -36,10 +36,4 @@ const media = Object.keys(minWidths).reduce(
   {} as IMedia
 );
 
-// media.phone = (strings: TemplateStringsArray) => css`
-//   @media (max-width: ${(minWidths.tablet - 1) / 16}em) {
-//     ${css(strings)};
-//   }
-// `;
-
 export default media;

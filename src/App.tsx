@@ -1,7 +1,7 @@
 import * as React from 'react';
 import TourCard from './components/TourCard/TourCard';
 import TourCardHidden from './components/TourCard/TourCardHidden';
-import TourThemeProvider from './components/Provider/Provider';
+import TourThemeProvider from './components/Provider';
 import media from './lib/media';
 import styled from './lib/styled-components';
 import { color, space } from './lib/theme-utils';

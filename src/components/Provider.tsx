@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import defaultTheme, { ITheme } from '../../lib/theme';
+import defaultTheme, { ITheme } from '../lib/theme';
 
 export interface IProviderProps {
   theme?: ITheme;

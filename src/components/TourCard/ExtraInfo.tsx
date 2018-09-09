@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { Flex, Text, Divider } from 'rebass';
 import getSymbolFromCurrency from 'currency-symbol-map';
-import LargeScreenOnly from './LargeScreenOnly';
-import SmallScreenOnly from './SmallScreenOnly';
+import LargeScreenOnly from '../LargeScreenOnly';
+import SmallScreenOnly from '../SmallScreenOnly';
+import Flex from 'src/components/Flex';
+import Text from 'src/components/Text';
 
 import Box from '../Box';
+import styled from 'src/lib/styled-components';
+import { space, color } from 'src/lib/theme-utils';
 const formatPrice = (price: number, currency: string) =>
   `${getSymbolFromCurrency(currency) || ''}${price}`;
 
@@ -41,6 +44,15 @@ const ExtraInfoSmall: React.SFC<IExtraInfoProps> = ({
   );
 };
 
+const Divider = styled.hr`
+  margin-left: ${space(0)};
+  margin-right: ${space(0)};
+  margin-top: ${space(3)};
+  margin-bottom: ${space(3)};
+  border-width: 1px;
+  border-color: ${color('gray')};
+`;
+
 const ExtraInfoLarge: React.SFC<IExtraInfoProps> = ({
   price,
   saving,
@@ -59,9 +71,9 @@ const ExtraInfoLarge: React.SFC<IExtraInfoProps> = ({
           <Text fontWeight="bold">{formatPrice(price, currency)}</Text>
         </Box>
       </Flex>
-      <Divider w={1} borderColor="gray" />
+      <Divider />
       <Text textAlign="center" fontWeight="bold">{`${length} Days`}</Text>
-      <Divider w={1} borderColor="gray" />
+      <Divider />
     </React.Fragment>
   );
 };
