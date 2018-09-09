@@ -1,1 +1,1 @@
-export * from './TourCard';
+export { default, ITourCardProps } from './TourCard';

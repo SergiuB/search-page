@@ -13,7 +13,7 @@ const Root = styled.div`
   }
 `;
 
-export default class TourThemeProvider extends React.Component<IProviderProps> {
+export default class Provider extends React.Component<IProviderProps> {
   public render() {
     const { theme = defaultTheme, ...props } = this.props;
 

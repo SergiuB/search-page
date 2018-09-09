@@ -7,19 +7,13 @@ import Box from '../Box';
 import styled from '../../lib/styled-components';
 import { color, space } from '../../lib/theme-utils';
 import media from '../../lib/media';
-// import LazyLoad from 'react-lazyload';
+import TourCardHidden from './TourCardHidden';
 
 export interface ITourCardProps extends IInfoProps, IExtraInfoProps {
   id: number;
   tourImage: string;
   mapImage: string;
 }
-
-// const Image = styled.img`
-//   display: block;
-//   max-width: 100%;
-//   height: auto;
-// `;
 
 const TourCardWrapper = styled.div`
   background: ${color('white')};
@@ -73,6 +67,8 @@ const Image: React.SFC<{ src: string; ratio: number }> = ({ src, ratio }) => (
 );
 
 export default class TourCard extends React.PureComponent<ITourCardProps> {
+  public static Hidden = TourCardHidden;
+
   public render() {
     return (
       <TourCardWrapper>
