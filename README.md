@@ -1,11 +1,20 @@
 # search-page
 
-A versatile search-page component created using the Compond Component pattern and the new Context API (React 16.4).
+A demo search page for listing tours from https://api.myjson.com/bins/18x6yt
 
 This project was bootstrapped with [Create React App (for Typescript)](https://github.com/facebookincubator/create-react-app).  
 You can find the most recent version of the CRA guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 See [online demo](https://sergiub.github.io/search-page/).
+
+## Features
+
+- Tours can be sorted by several criteria.
+- Tour cards are lazy loaded for best performance using [react-lazyload](https://github.com/jasonslyvia/react-lazyload).
+- Responsive design
+- Supports theming
+  - Styling is done using [styled-components](https://www.styled-components.com/)
+  - Styling system draws inspiration from [rebass](https://rebassjs.org/)
 
 ## Available Scripts
 
@@ -30,3 +39,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
+
+### `yarn analyze`
+
+Uses [Source Map Explorer](https://www.npmjs.com/package/source-map-explorer) to understand where code bloat is coming from.
+Need to run `yarn build` first.
