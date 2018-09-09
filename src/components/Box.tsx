@@ -1,6 +1,17 @@
 import styled, { css } from '../lib/styled-components';
 import { space } from '../lib/theme-utils';
 
+/**
+ * Theme-aware Box component, for layouts.
+ * Inspired by Box component in https://rebassjs.org/.
+ *
+ * Sample usages:
+ *    <Box width="40%">...</Box>
+ *    <Box width="60%">...</Box>
+ *    <Box pb={2} ml="auto">...</Box>
+ *
+ */
+
 export interface IBoxProps {
   px?: string | number;
   pt?: string | number;

@@ -1,6 +1,11 @@
 import { css } from 'styled-components';
 import { InterpolationValue } from 'styled-components';
 
+/**
+ * Media query mixin, straight out of the docs:
+ * https://www.styled-components.com/docs/advanced#media-templates.
+ */
+
 const minWidths = {
   xxLarge: 1921,
   xLarge: 1441,

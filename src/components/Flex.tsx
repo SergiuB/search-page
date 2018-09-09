@@ -4,9 +4,26 @@ import { space } from '../lib/theme-utils';
 import Box, { IBoxProps } from 'src/components/Box';
 
 /**
- * Flex inherits from Box, and adds it's own flex-related attributes.
- * https://www.styled-components.com/docs/api#styling-components
+ *
  */
+
+/**
+ * Theme-aware Flex component, for flex layouts.
+ * Inspired by Flex component in https://rebassjs.org/.
+ *
+ * Flex inherits from Box, and adds it's own flex-related attributes
+ * (https://www.styled-components.com/docs/api#styling-components);
+ *
+ * Sample usage:
+ *
+ *     <Flex justifyContent="space-between">
+ *       <Box>... </Box>
+ *       <Box>...</Box>
+ *       <Box>...</Box>
+ *     </Flex>
+ *
+ */
+
 const Flex = styled<
   {
     justifyContent?: string;

@@ -1,6 +1,15 @@
 import styled, { css } from '../lib/styled-components';
 import { fontSize, fontWeight, color } from '../lib/theme-utils';
 
+/**
+ * Theme-aware text component. Inspired by https://rebassjs.org/.
+ *
+ * Sample usages:
+ *  <Text textAlign="right">From</Text>
+ *  <Text fontWeight="bold">{formatPrice(price, currency)}</Text>
+ *
+ */
+
 export interface ITextProps {
   fontSize?: string | number;
   fontWeight?: string;

@@ -29,7 +29,6 @@ const SelectWrapper = styled.div`
   justify-content: flex-end;
   align-items: center;
   color: gray;
-  /* width: 250px; */
 `;
 
 const SortingDrodown: React.SFC<{

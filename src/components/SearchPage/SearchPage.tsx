@@ -68,6 +68,10 @@ interface ISearchPageState {
   sortBy: string;
 }
 
+/**
+ * Search page container, responsible with fetching and sorting.
+ * Renders either a Spinner or a SearchPageItems with the items in the right order.
+ */
 export default class SearchPage extends React.Component<
   ISearchPageProps,
   ISearchPageState
