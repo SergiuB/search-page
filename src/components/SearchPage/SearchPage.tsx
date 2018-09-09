@@ -9,6 +9,7 @@ import SortingDrodown, { ISortOption } from 'src/components/SortingDropdown';
 
 import { ITourItemAPI } from './types';
 import SearchPageItems from './SearchPageItems';
+import media from '../../lib/media';
 
 const itemToTourCardProps: (item: ITourItemAPI) => ITourCardProps = item => ({
   ...item,
@@ -21,11 +22,14 @@ const itemToTourCardProps: (item: ITourItemAPI) => ITourCardProps = item => ({
 });
 
 const Container = styled.div`
+  min-width: 420px;
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: ${space(3)};
-  padding-right: ${space(3)};
+  ${media.phone`padding-left: 0`}
+  ${media.phone`padding-right: 0`}
+  ${media.desktop`padding-left: ${space(3)}`}
+  ${media.desktop`padding-right: ${space(3)}`}
   background: ${color('gray')};
   flex-wrap: wrap;
   display: flex;
