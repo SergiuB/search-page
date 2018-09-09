@@ -138,6 +138,12 @@
     "@types/node" "*"
     "@types/react" "*"
 
+"@types/react-lazyload@^2.3.1":
+  version "2.3.1"
+  resolved "https://artifactory.hootops.com:443/artifactory/api/npm/hootsuite-npm/@types/react-lazyload/-/react-lazyload-2.3.1.tgz#6a1814432f668081ff693abfa8e09bff09aa3649"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^16.4.13":
   version "16.4.13"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.13.tgz#1385f5dc3486aa493849a32ccce626a817543e28"
@@ -6042,6 +6048,10 @@ react-error-overlay@^4.0.1:
 react-is@^16.3.1, react-is@^16.4.2, react-is@^16.5.0:
   version "16.5.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.5.0.tgz#2ec7c192709698591efe13722fab3ef56144ba55"
+
+react-lazyload@^2.3.0:
+  version "2.3.0"
+  resolved "https://artifactory.hootops.com:443/artifactory/api/npm/hootsuite-npm/react-lazyload/-/react-lazyload-2.3.0.tgz#ccb134223012447074a96543954f44b055dc6185"
 
 react-scripts-ts@2.17.0:
   version "2.17.0"

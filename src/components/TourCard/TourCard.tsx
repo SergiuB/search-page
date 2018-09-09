@@ -7,6 +7,7 @@ import Box from '../Box';
 import styled from '../../lib/styled-components';
 import { color, space } from '../../lib/theme-utils';
 import media from '../../lib/media';
+// import LazyLoad from 'react-lazyload';
 
 export interface ITourCardProps extends IInfoProps, IExtraInfoProps {
   id: number;
@@ -14,11 +15,11 @@ export interface ITourCardProps extends IInfoProps, IExtraInfoProps {
   mapImage: string;
 }
 
-const Image = styled.img`
-  display: block;
-  max-width: 100%;
-  height: auto;
-`;
+// const Image = styled.img`
+//   display: block;
+//   max-width: 100%;
+//   height: auto;
+// `;
 
 const TourCardWrapper = styled.div`
   background: ${color('white')};
@@ -53,6 +54,22 @@ const MapThumbnail = styled(Box)`
   right: 10px;
   width: 100px;
 `;
+
+const Image: React.SFC<{ src: string; ratio: number }> = ({ src, ratio }) => (
+  <div
+    style={{
+      width: '100%',
+      height: 0,
+      paddingTop: `${ratio * 100}%`,
+      position: 'relative'
+    }}
+  >
+    <img
+      src={src}
+      style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}
+    />
+  </div>
+);
 
 export default class TourCard extends React.PureComponent<ITourCardProps> {
   public render() {
@@ -113,8 +130,8 @@ export default class TourCard extends React.PureComponent<ITourCardProps> {
   }
 
   private renderImage() {
-    const imageEl = <Image src={this.props.tourImage} />;
-    const mapEl = <Image src={this.props.mapImage} />;
+    const imageEl = <Image src={this.props.tourImage} ratio={680 / 928} />;
+    const mapEl = <Image src={this.props.mapImage} ratio={400 / 928} />;
 
     return (
       <React.Fragment>
