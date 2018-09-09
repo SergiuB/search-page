@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'src/lib/styled-components';
-import Box from './Box';
-import { color } from '../lib/theme-utils';
+import Box from 'src/components/Box';
+import { color } from 'src/lib/theme-utils';
 
 /**
  * From https://projects.lukehaas.me/css-loaders/

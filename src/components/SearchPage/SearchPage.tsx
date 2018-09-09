@@ -5,9 +5,7 @@ import styled from 'src/lib/styled-components';
 import { color, space } from 'src/lib/theme-utils';
 import Spinner from 'src/components/Spinner';
 import { ITourCardProps } from 'src/components/TourCard';
-import SortingDrodown, {
-  ISortOption
-} from '../SortingDropdown/SortingDropdown';
+import SortingDrodown, { ISortOption } from 'src/components/SortingDropdown';
 
 import { ITourItemAPI } from './types';
 import SearchPageItems from './SearchPageItems';

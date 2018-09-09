@@ -1,11 +1,13 @@
+/**
+ * Theming inspired by Rebass (https://rebassjs.org/theming).
+ */
+
 export const colors = {
   black: '#000',
   white: '#fff',
   darken: 'rgba(0, 0, 0, 0.25)',
   gray: '#eee'
 };
-
-export const breakpoints = [32, 48, 64, 80].map(n => n + 'em');
 
 export const space = [0, 4, 8, 16, 32, 64, 128];
 
@@ -31,7 +33,6 @@ export const shadows = [
 ];
 
 export interface ITheme {
-  breakpoints: string[];
   space: number[];
   fontSizes: number[];
   fontWeights: {
@@ -54,7 +55,6 @@ export interface ITheme {
 }
 
 const theme: ITheme = {
-  breakpoints,
   space,
   fontSizes,
   fontWeights,

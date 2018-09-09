@@ -1,5 +1,5 @@
-import styled, { css } from '../lib/styled-components';
-import { space } from '../lib/theme-utils';
+import styled, { css } from 'src/lib/styled-components';
+import { space } from 'src/lib/theme-utils';
 
 /**
  * Theme-aware Box component, for layouts.
@@ -10,6 +10,7 @@ import { space } from '../lib/theme-utils';
  *    <Box width="60%">...</Box>
  *    <Box pb={2} ml="auto">...</Box>
  *
+ * Only a few properties have been added, just enough for this project.
  */
 
 export interface IBoxProps {

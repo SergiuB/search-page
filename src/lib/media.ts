@@ -27,7 +27,7 @@ interface IMedia {
   phone: MediaFunction;
 }
 
-// Iterate through the sizes and create a media template
+// Iterate through the minWidths and create a media template
 const media = Object.keys(minWidths).reduce(
   (acc, label) => {
     acc[label] = (strings: TemplateStringsArray, ...args: any[]) => css`

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import LazyLoadBase from 'react-lazyload';
+
 import TourCard, { ITourCardProps } from 'src/components/TourCard';
 import media from 'src/lib/media';
 import styled from 'src/lib/styled-components';

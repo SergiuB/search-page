@@ -1,13 +1,14 @@
 import * as React from 'react';
 import getSymbolFromCurrency from 'currency-symbol-map';
-import LargeScreenOnly from '../LargeScreenOnly';
-import SmallScreenOnly from '../SmallScreenOnly';
-import Flex from 'src/components/Flex';
-import Text from 'src/components/Text';
 
-import Box from '../Box';
 import styled from 'src/lib/styled-components';
 import { space, color } from 'src/lib/theme-utils';
+import LargeScreenOnly from 'src/components/LargeScreenOnly';
+import SmallScreenOnly from 'src/components/SmallScreenOnly';
+import Flex from 'src/components/Flex';
+import Text from 'src/components/Text';
+import Box from 'src/components/Box';
+
 const formatPrice = (price: number, currency: string) =>
   `${getSymbolFromCurrency(currency) || ''}${price}`;
 

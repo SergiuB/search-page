@@ -1,11 +1,7 @@
 import * as React from 'react';
-import styled, { css } from '../lib/styled-components';
-import { space } from '../lib/theme-utils';
+import styled, { css } from 'src/lib/styled-components';
+import { space } from 'src/lib/theme-utils';
 import Box, { IBoxProps } from 'src/components/Box';
-
-/**
- *
- */
 
 /**
  * Theme-aware Flex component, for flex layouts.
@@ -21,6 +17,8 @@ import Box, { IBoxProps } from 'src/components/Box';
  *       <Box>...</Box>
  *       <Box>...</Box>
  *     </Flex>
+ *
+ * Only a few properties have been added, just enough for this project.
  *
  */
 

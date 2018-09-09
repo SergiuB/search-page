@@ -1,12 +1,14 @@
 import * as React from 'react';
-import Info, { IInfoProps } from './Info';
-import LargeScreenOnly from '../LargeScreenOnly';
-import SmallScreenOnly from '../SmallScreenOnly';
+
+import styled from 'src/lib/styled-components';
+import { color, space } from 'src/lib/theme-utils';
+import media from 'src/lib/media';
+import LargeScreenOnly from 'src/components/LargeScreenOnly';
+import SmallScreenOnly from 'src/components/SmallScreenOnly';
+import Box from 'src/components/Box';
+
 import ExtraInfo, { IExtraInfoProps } from './ExtraInfo';
-import Box from '../Box';
-import styled from '../../lib/styled-components';
-import { color, space } from '../../lib/theme-utils';
-import media from '../../lib/media';
+import Info, { IInfoProps } from './Info';
 import TourCardHidden from './TourCardHidden';
 
 export interface ITourCardProps extends IInfoProps, IExtraInfoProps {
