@@ -22,7 +22,7 @@ const itemToTourCardProps: (item: ITourItemAPI) => ITourCardProps = item => ({
 });
 
 const Container = styled.div`
-  min-width: 420px;
+  min-width: 360px;
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
