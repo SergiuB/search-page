@@ -5,7 +5,7 @@ import TourThemeProvider from './components/Provider/Provider';
 import media from './lib/media';
 import styled from './lib/styled-components';
 import { color, space } from './lib/theme-utils';
-import LazyLoadBase from 'react-lazyload';
+import LazyLoadBase, { forceCheck } from 'react-lazyload';
 import Spinner from 'src/components/Spinner';
 
 const TourCardContainer = styled.div`
@@ -99,19 +99,65 @@ interface ITourItem {
   map_image: string;
 }
 
-//
-class App extends React.Component<{}, { items: ITourItem[] }> {
-  public state = { items: [] };
-  public render() {
-    const { items } = this.state;
+interface ISortOption {
+  label: string;
+  value: string;
+}
 
-    const content = !items.length ? (
+const defaultSortOptions: ISortOption[] = [
+  {
+    label: 'Lowest Price First',
+    value: 'lowestPrice'
+  },
+  {
+    label: 'Highest Price First',
+    value: 'highestPrice'
+  },
+  {
+    label: 'Longest Tour First',
+    value: 'longestTour'
+  },
+  {
+    label: 'Shortest Tour First',
+    value: 'shortestTour'
+  }
+];
+
+const SortingDrodown: React.SFC<{
+  sortOptions: ISortOption[];
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLSelectElement>;
+}> = ({ sortOptions, value, onChange }) => {
+  return (
+    <select onChange={onChange} value={value}>
+      {sortOptions.map(option => (
+        <option key={option.value} value={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </select>
+  );
+};
+
+class App extends React.Component<{}, { items: ITourItem[]; sortBy: string }> {
+  public state = { items: [] as ITourItem[], sortBy: 'lowestPrice' };
+  public render() {
+    const { items, sortBy } = this.state;
+
+    const sortedItems = items.sort(this.compareTours);
+
+    const content = !sortedItems.length ? (
       <Center>
         <Spinner />
       </Center>
     ) : (
       <TourCardContainer>
-        {items.map((item: ITourItem) => (
+        <SortingDrodown
+          sortOptions={defaultSortOptions}
+          value={sortBy}
+          onChange={this.handleSortChange}
+        />
+        {sortedItems.map((item: ITourItem) => (
           <TourCardWrapper key={item.id}>
             <LazyLoad item={item}>
               <TourCard
@@ -144,6 +190,29 @@ class App extends React.Component<{}, { items: ITourItem[] }> {
       .then(response => response.json())
       .then((items: ITourItem[]) => this.setState({ items }));
   }
+
+  private handleSortChange = (
+    event: React.SyntheticEvent<HTMLSelectElement>
+  ) => {
+    this.setState({ sortBy: event.currentTarget.value }, () => {
+      forceCheck();
+    });
+  };
+
+  private compareTours = (tourA: ITourItem, tourB: ITourItem) => {
+    switch (this.state.sortBy) {
+      case 'lowestPrice':
+        return tourA.price - tourB.price;
+      case 'highestPrice':
+        return tourB.price - tourA.price;
+      case 'longestTour':
+        return tourB.length - tourA.length;
+      case 'shortestTour':
+        return tourA.length - tourB.length;
+      default:
+        throw new Error(`Unsupported sorting criteria: ${this.state.sortBy}`);
+    }
+  };
 }
 
 export default App;
